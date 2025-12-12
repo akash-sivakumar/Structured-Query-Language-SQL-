@@ -11,3 +11,5 @@ INSERT INTO students VALUES
 (1, 'Akash', 20),
 (2, 'Rahul', 22),
 (3, 'Sita', 19);
+
+select*from students;
