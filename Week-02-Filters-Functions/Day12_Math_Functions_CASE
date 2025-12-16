@@ -1,0 +1,38 @@
+USE week1_practice;                                   -- Select database
+
+-- Mathematical functions
+
+SELECT COUNT(*) AS total_students
+FROM students;                                       -- Total students
+
+SELECT AVG(age) AS average_age
+FROM students;                                       -- Average age
+
+SELECT MIN(age) AS youngest_age,
+       MAX(age) AS oldest_age
+FROM students;                                       -- Min & max age
+
+SELECT ROUND(AVG(age), 2) AS avg_age_rounded
+FROM students;                                       -- Rounded average
+
+-- CASE statement
+
+SELECT name, age,
+CASE
+    WHEN age < 20 THEN 'Teen'
+    WHEN age BETWEEN 20 AND 22 THEN 'Young Adult'
+    ELSE 'Adult'
+END AS age_group
+FROM students;                                       -- Categorize ages
+
+-- CASE with GROUP BY
+
+SELECT
+CASE
+    WHEN age < 20 THEN 'Teen'
+    WHEN age BETWEEN 20 AND 22 THEN 'Young Adult'
+    ELSE 'Adult'
+END AS age_group,
+COUNT(*) AS total_students
+FROM students
+GROUP BY age_group;                                  -- Count per group
