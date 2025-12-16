@@ -1,0 +1,60 @@
+select * from students
+ where student_name like 'A%' and student_age >=20;
+
+select * from students
+where student_age in(19,20,22);
+
+select * from students
+where student_age not in (20,22);
+
+select * from students
+where student_age between 19 and 22;
+
+select * from students
+where created_at > '2024-01-01';
+
+select * from students
+where student_name like '% %';
+
+select * from students
+where length(student_name) > 6;
+
+select * from students
+where year(created_at) = '2024';
+
+select  * from students
+where student_name like 'A%' or student_name like 'I%';
+
+select 
+case
+when student_age < 20 then 'teen'
+when student_age between 20 and 22 then 'young adult'
+else 'adult'
+end as age_category
+from students;
+
+# count students in each category
+
+select
+case
+when student_age < 20 then 'teen'
+when student_age between 21 and 22 then 'young adult'
+else 'adult'
+end as age_category,
+count(*) as total
+from students
+group by age_category;
+
+select * from students
+where student_age > ( select avg(student_age) from students);
+
+select * from students
+where student_name like 'A%' and year(created_at) = '2024';
+
+select * from students
+order by student_age desc
+limit 3;
+
+select year(created_at) as year,count(*) as total
+from students
+group by year;
